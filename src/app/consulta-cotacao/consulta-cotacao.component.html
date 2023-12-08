@@ -1,0 +1,32 @@
+<div class="consulta-container">
+  <div>
+    <div class="mensagem-sucesso" *ngIf="mensagemSucesso">{{ mensagemSucesso }}</div>
+    <div class="mensagem-erro" *ngIf="mensagemErro">{{ mensagemErro }}</div>
+  </div>
+
+  <h1 style="float: left;">Consulta de Cotações</h1>
+  <div style="float: right;padding-top: 15px;">
+    <input type="text" [(ngModel)]="dataCotacao" pattern="\d{4}-\d{2}-\d{2}" placeholder="yyyy-mm-dd" required>
+  <button (click)="consultaCotacao(dataCotacao)">Search</button>
+  </div>
+
+  <table>
+      <thead>
+        <tr>
+          <th>Cotação Compra</th>
+          <th>Cotação Venda</th>
+          <th>Data Cotacao</th>
+          <th>Tempo da Requisicao</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cotacao of cotacoes">
+          <td>{{ cotacao.cotacaoCompra }}</td>
+          <td>{{ cotacao.cotacaoVenda }}</td>
+          <td>{{ cotacao.dataCotacao }}</td>
+          <td>{{ cotacao.dataHoraCotacao }}</td>
+          <td>{{ cotacao.timestampRequisicao }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
